@@ -43,16 +43,9 @@ class App extends Component {
   }
 
   render () {
-    const style = {
-      backgroundColor: 'green',
-      font: 'inherit',
-      color: 'white',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
 
     let persons = null;
+    let btnClass = '';
 
     if ( this.state.showPersons ) {
       persons = (
@@ -69,16 +62,16 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = 'red'
+      btnClass = classes.Red;
     }
 
     const assignedClasses = [];
 
     if (this.state.persons.length <= 2) {
-      assignedClasses.push( classes.red );
+      assignedClasses.push( classes.Red );
     }
     if (this.state.persons.length <= 1) {
-      assignedClasses.push( classes.bold);
+      assignedClasses.push( classes.Bold);
     }
 
     return (
@@ -86,7 +79,7 @@ class App extends Component {
         <h1>Hi, I'm a React App</h1>
         <p className={assignedClasses.join(' ')}>This is really working!</p>
         <button
-          style={style}
+          className={btnClass}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
